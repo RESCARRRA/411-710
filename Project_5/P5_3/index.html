@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Project 5_1</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+
+<style type="text/css">
+.container {
+	border: 10px solid #151f28;
+	width: 1024px;
+}
+.brand {
+	background-color: #151f28;
+	border-bottom: 10px solid #151f28;
+}
+.img {
+	height: 300px;
+	width: 300px;
+	margin: 10px;
+}
+.image {
+	position: relative;
+	align: left;
+	left: 15px;
+}
+h5 {
+	text-align: center;
+	padding: 20px;
+	margin-top: 10px;
+	color: #151f28;
+	font-family: 'Courier';
+}
+a.credits {
+	border: 1px solid #151f28;color: black;padding: 4px 6px;font-family: arial;font-size: 10px;
+	font-weight: bold;line-height: 1.2;display: inline-block;border-radius: 3px;align: center;
+}
+.credits p {
+	font-size: 11px;
+	padding: 1px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+</style>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+// jQuery shorthand for on ready, freddy
+    $(document).ready(function() {
+
+// array of images
+	var images = [
+		"<img src='../P5_images/steven-wang-410934.jpg' alt='neon music sign' class='img'>",
+		"<img src='../P5_images/michael-liao-391846.jpg' alt='stars in nightsky' class='img'>",
+		"<img src='../P5_images/luke-ellis-craven-411993.jpg' alt='palm leaves'   class='img'>",
+		"<img src='../P5_images/hala-alghanim-397056.jpg' alt='saudi arabia' class='img'>"
+	];
+// for loop appending each image to specified div
+	for (var i = 0; i < images.length; i++) {
+		var pic = $("<div class='image'>").html(images[i]);
+		$("#imageDiv").append(pic);
+	};
+
+	$(".image").click(function() {
+	var imgPosition = $(this).position();  // grabbing the focused image's current position
+	console.log(imgPosition);
+	console.log(imgPosition.left);
+// debugger;
+
+	if (imgPosition.left >= 600) {
+		$(this).stop().animate({left: 15}, 2000);
+		console.log(imgPosition);
+
+	}
+	else {
+		$(this).stop().animate({left: 650}, 2000);
+		console.log(imgPosition);
+
+	};
+	
+});
+
+});
+
+
+</script>
+
+<div class="container">
+	<div class="brand text-center">
+		<a href="../home.html"><img alt="sftwear logo" class="text-center" src="../sftwear-logo/sftwear-update3.png"></a><br>
+	</div>
+
+	<h5>Browse the image options below...</h5>
+
+	<div id="imageDiv">
+	</div>
+	<br>
+</div>
+<div class="text-center credits">
+	<br>
+	<p>PHOTO CREDITS</p> 
+		<a class='credits' href="https://unsplash.com/@smwangphoto?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Steven Wang</span></a> 
+		
+		<a class="credits" href="https://unsplash.com/@mjliao?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Michael Liao</span></a> 
+
+		<a class="credits" href="https://unsplash.com/@lukeelliscraven?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Luke Ellis-Craven</span></a> 
+
+		<a class='credits' href="https://unsplash.com/@hala097?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Hala AlGhanim</span></a>
+	</div>
+</div>
+</body>
+</html>

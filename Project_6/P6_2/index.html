@@ -1,0 +1,119 @@
+ <!DOCTYPE html>
+
+<html>
+<head>
+	<title>Project 6_2</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+
+<style type="text/css">
+.brand {
+	background-color: #151f28;
+	border-bottom: 10px solid #151f28;
+	border-radius: 10px;
+}
+.logo {
+	width: 50%;
+	height: 60%;
+}
+h5 {
+	text-align: center;
+	padding: 20px;
+	margin-top: 10px;
+	color: #151f28;
+	font-family: 'Courier';
+}
+.credits {
+	bottom: 1%;
+	left: 90%;
+	position: fixed;
+	font-size: .2em;
+	background-color: rgba(244, 240, 240, .6);
+	padding: 5px;
+	border-radius: 10px;
+}
+.img {
+	height: 200px;
+	width: 200px;
+}
+</style>
+<div class="container">
+	<div class="brand text-center well-sm">
+		<a href="../home.html"><img alt="sftwear logo" class="text-center logo" src="../sftwear-logo/sftwear-update3.png"></a><br>
+	</div>
+
+	<h5>Browse the image options below...</h5><br>
+
+	<div class="row"><br>
+		<div class="imgSmall col-4">
+			<img alt="watercolor bear" class="img img-responsive" src="../P6_images/flp-beart.jpg"> 
+			<img alt="watercolor horse" class="img img-responsive" src="../P6_images/flp-horse.jpg"> 
+			<img alt="watercolor whale" class="img img-responsive" src="../P6_images/flp-whale.jpg"> 
+			<img alt="watercolor fox" class="img img-responsive" src="../P6_images/flp-foxt.jpg"> 
+			<img alt="watercolor wolf" class="img img-responsive" src="../P6_images/flp-wolf.jpg">
+		</div>
+		<div class="col-2"></div>
+		<div class="imgLarge col-6"></div><br>
+	</div>
+</div>
+<br><br><br> 
+<div class="credits">
+	Artist: <a href="http://www.furrylittlepeach.com/">Furry Little Peach</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+// Document ready | jQuery shorthand w/ 'use strict'
+// =====================================================================================
+$(function() {
+	"use strict";
+
+
+// Setup Global Variables 
+// -------------------------------------------------------------------------------------	
+	var enlarged = false;
+	var selectedImg;
+ 
+// Events | mouse, click 
+// -------------------------------------------------------------------------------------	
+	
+	// Mouseover | opacity changed to 0.5
+	$(".img").mouseover(function() {
+		$(this).css({
+			opacity: 0.5
+		});
+	});
+	// Mouseout | opacity changed to 1.0
+	$(".img").mouseout(function() {
+		$(this).css({
+			opacity: 1
+		});
+	});
+	// Click event obj | enlarge false, renders image to div '.imgSmall'
+	$(".img").click(function(event) {
+		if (enlarged == true) {
+			enlarged = false;
+			$(".imgSmall").append($(".large").animate({	
+				width: "200px",
+				height: "200px",
+				opacity: 1
+			}, 1000));
+			$(".img").removeClass("large");
+		};
+		// Click event obj | enlarge true, renders image to div '.imgLarge'
+		if (enlarged = true) {
+			selectedImg = $(this).animate({
+				width: "600px",
+				height: "600px",
+				opacity: 1
+			}, 1000).addClass("large");
+			$(".imgLarge").html(selectedImg);
+		};
+	}); // click closure
+}); // *closure
+</script>
+
+</body>
+</html>

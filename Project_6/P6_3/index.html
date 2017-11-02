@@ -1,0 +1,136 @@
+ <!DOCTYPE html>
+
+<html>
+<head>
+	<title>Project 6_3</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style type="text/css">
+.brand {
+	background-color: #151f28;
+	border-bottom: 10px solid #151f28;
+	border-radius: 10px;
+	}
+.logo {
+	width: 50%;
+	height: 60%;
+}
+h5 {
+	text-align: center;
+	padding: 20px;
+	margin-top: 10px;
+	color: #151f28;
+	font-family: 'Courier';
+}
+.credits {
+	bottom: 1%;
+	left:90%;
+	position: fixed;
+	font-size: .2em;
+	background-color: rgba(244,240,240,.6);
+	padding:5px; border-radius:10px;
+
+}
+.img {
+	height:200px;
+	width: 200px;
+	position: relative;
+	margin: 5px;
+	border-radius: 50%;
+	box-shadow: 10px 5px gainsboro;
+}
+.blur{
+  	-webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+	-webkit-filter: blur(2px);
+  	-ms-filter: blur(2px);
+}
+.blur:hover {
+	-webkit-filter: blur(0px);
+  	-ms-filter: blur(0px);
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="brand text-center well-sm">
+		<a href="../home.html"><img alt="sftwear logo" class="text-center logo" src="../sftwear-logo/sftwear-update3.png"></a><br>
+	</div>
+	<h5>Browse the image options below. Hover over each image to get a closer look!</h5>
+	<br>
+	<div class="row">
+	<br>
+	<div class="col-6 smallImg">
+		<img src="../P6_images/flp-beart.jpg" alt="bear" data-state="still" class="img img-responsive">	
+		<img src="../P6_images/flp-horse.jpg" alt="horse" data-state="still" class="img img-responsive">
+		<img src="../P6_images/flp-whale.jpg" alt="whale" data-state="still" class="img img-responsive">
+		<img src="../P6_images/flp-foxt.jpg" alt="fox" data-state="still" class="img img-responsive">	
+	 	<img src="../P6_images/flp-wolfb.jpg" alt="wolf" data-state="still" class="img img-responsive">
+ 	</div>
+	<div class="col-6">
+	<img id="largeImg">
+ 	</div>
+ 	<br>
+</div>
+<br><br>
+</div>
+<br>
+<div class="credits">Artist: <a href="http://www.furrylittlepeach.com/">Furry Little Peach</a></div>
+<script type="text/javascript">
+
+// Document ready | jQuery shorthand w/ 'use strict'
+// =====================================================================================
+$(function() {
+	"use strict";
+
+// Setup Global Variables 
+// -------------------------------------------------------------------------------------
+	var selectedImg;
+	var state;
+	
+// Mouse events
+// -------------------------------------------------------------------------------------
+	
+	// Mouseover | opacity changed to 0.5
+	$(".img").mouseover(function() {
+		$(this).css({
+			opacity: 0.5
+		});
+	});
+	// Mouseout | opacity changed to 1.0
+	$(".img").mouseout(function() {
+		$(this).css({
+			opacity: 1
+		});
+	});
+	// Mouseenter | bound element (.img)
+	$(".img").mouseenter(function(event) {
+		// Data-state conditionals 
+		state = $(this).attr("data-state");
+		if (state == "still") {
+			state = "active";
+			// State "active" reassigns image source
+			var source = $(this).attr("src");
+			$("#largeImg").hide();
+			// Large image rendered and assigned class of 'morph' post fadeIn
+			selectedImg = $("#largeImg").attr("src", source).fadeIn(2000, function() {
+				$(".smallImg").addClass("blur");
+				$(this).attr("data-state", "active");
+			}); // console.log(state);
+		}
+		else {
+			$("#largeImg").attr("src", "");
+			$(this).attr("data-state", "still");
+		}
+	});
+	// Mouseleave | bound element (.img)
+	$(".img").mouseleave(function(event) {
+		// Data-state set to still
+		state = $(this).attr("data-state", "still");
+	}); // events closure
+}); // *closure
+</script>
+
+</body>
+</html>

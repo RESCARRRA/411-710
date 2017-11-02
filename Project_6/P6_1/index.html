@@ -1,0 +1,82 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<title>Project 6_1</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+body {
+	background-image: url("../P6_images/earthrise.jpg");
+	opacity: .8;
+	background-repeat: no-repeat;
+}
+.container {
+	color: snow;
+}
+.brand {
+	background-color: #151f28;
+	border-bottom: 10px solid #151f28;
+	border-radius: 10px;
+}
+.logo {
+	width: 50%;
+	height: 60%;
+}
+#nasa {
+	width: 200px;
+	height: 250px;
+	top;
+	left;
+}
+</style>
+
+<script>
+var clicked = false;
+$(document).ready(function() {
+	$("body").mousemove(function(e) {
+	$(".coordinates").text("X: " + e.pageX + ", " + "Y: " + e.pageY);
+	$(".status").text("Landed: " + clicked);	
+		$("#nasa").offset({
+			top: e.pageY,
+			left: e.pageX
+		});
+	});
+	$(document).click(function(e) {
+		if (clicked == true) {
+			clicked = false;
+			$(".status").text("Landed: " + clicked);
+			$("body").mousemove(function(e) {
+				$("#nasa").offset({
+					top: e.pageY,
+					left: e.pageX
+				});
+				$(".coordinates").text("X: " + e.pageX + ", " + "Y: " + e.pageY);
+			})
+		}
+		else {
+			clicked = true;
+			$(".status").text("Landed: " + clicked);
+			$("#nasa").offset({
+				top: e.pageY,
+				left: e.pageX
+			});
+			$('body').off("mousemove");
+		}
+		$(".coordinates").text("X: " + e.pageX + ", " + "Y: " + e.pageY);
+	});
+});
+  </script> 
+</head>
+<body>
+<div class="container">
+	<div class="brand text-center well-sm">
+		<a href="../home.html"><img alt="sftwear logo" class="text-center logo" src="../sftwear-logo/sftwear-update3.png"></a>
+	</div><br>
+	<div>
+		<p class="coordinates"></p>
+		<p class="status"></p>
+	</div><img alt="NASA_Space_Suit" class="img img-responsive" id="nasa" src="../P6_images/NASA_Space_Suit.png"><br>
+	<br>
+</div>
+</body>
+</html>

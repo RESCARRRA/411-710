@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Project 5_1</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+
+<style type="text/css">
+.container {
+	border: 10px solid #151f28;
+}
+.brand {
+	background-color: #151f28;
+	border-bottom: 10px solid #151f28;
+}
+
+.img {
+	height: 30%;
+	width: 30%;
+	margin: 2%;
+}
+p {
+	color: snow;
+}
+h5 {
+	text-align: center;
+	padding: 20px;
+	margin-top: 10px;
+	color: #151f28;
+	font-family: 'Courier';
+}
+
+a.credits {
+	border: 1px solid #151f28;color: black;padding: 4px 6px;font-family: arial;font-size: 10px;
+	font-weight: bold;line-height: 1.2;display: inline-block;border-radius: 3px;align: center;
+}
+.credits p {
+	color:#151f28;
+	font-size: 11px;
+	padding: 1px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.zoom {
+	height: 60%;
+	width: 60%;
+	transition: 3s;
+}
+
+</style>
+
+<div class="container">
+	<div class="brand text-center">
+		<a href="../home.html"><img alt="sftwear logo" class="text-center" src="../sftwear-logo/sftwear-update3.png"></a><br>
+	</div>
+
+	<h5>Browse the image options below...</h5>
+
+	<div id="imageDiv">
+	</div>
+	<br>
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+// Document on ready shorthand function (jQuery)
+$(function() {
+	var imageRow = $("<div class='row justify-content-center'>");
+	$("#imageDiv").html(imageRow);
+	var images = [
+		"<img src='../P5_images/steven-wang-410934.jpg' alt='neon music sign' class='img img-responsive '>",
+		"<img src='../P5_images/michael-liao-391846.jpg' alt='stars in nightsky' class='img img-responsive '>",
+		"<img src='../P5_images/luke-ellis-craven-411993.jpg' alt='palm leaves' class='img img-responsive '>",
+		"<img src='../P5_images/hala-alghanim-397056.jpg' alt='saudi arabia' class='img img-responsive '>"
+	];
+	for (var i = 0; i < images.length; i++) {
+		var pic = images[i];
+		$(".row").append(pic);
+		console.log(pic);
+	};
+	// First event listeners
+	$(".img").mouseenter(function() {
+			$(this).addClass("zoom");
+			// $(this).delay(3000).animate({width: "60%", height: "60%"});
+		})
+		// Second event listeners
+		.mouseleave(function() {
+			$(this).removeClass("zoom");
+			// $(this).animate({height: "30%",width:"30%"});		
+		});
+}); // on ready close
+</script>
+<div class="text-center credits">
+	<br>
+	<p>PHOTO CREDITS</p> 
+		<a class='credits' href="https://unsplash.com/@smwangphoto?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Steven Wang</span></a> 
+		
+		<a class="credits" href="https://unsplash.com/@mjliao?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Michael Liao</span></a> 
+
+		<a class="credits" href="https://unsplash.com/@lukeelliscraven?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Luke Ellis-Craven</span></a> 
+
+		<a class='credits' href="https://unsplash.com/@hala097?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" rel="noopener noreferrer" target="_blank"><span>Hala AlGhanim</span></a>
+	</div>
+</div>
+</body>
+</html>
